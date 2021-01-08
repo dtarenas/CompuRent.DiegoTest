@@ -1,0 +1,118 @@
+﻿@model HomeIndexViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section id="main" class="text-center pt-5">
+    <h1 class="display-4 text-success mt-5"><b>CompuRent</b> - Diego Arenas Test</h1>
+
+    <div class="row">
+        <div class="col-12 col-md-3 col-sm-3 col-lg-3">
+            <a class="btn btn-block btn-info my-2" href="javascript:;" onclick="SearchTryAgain()()">Historia de Usuario 1</a>
+        </div>
+        <div class="col-12 col-md-3 col-sm-3 col-lg-3">
+            <a class="btn btn-block btn-primary my-2" href="#">Historia de Usuario 2</a>
+        </div>
+        <div class="col-12 col-md-3 col-sm-3 col-lg-3">
+            <a class="btn btn-block btn-warning my-2" href="#">Historia de Usuario 3</a>
+        </div>
+        <div class="col-12 col-md-3 col-sm-3 col-lg-3">
+            <a class="btn btn-block btn-secondary my-2" href="#">Historia de Usuario 4</a>
+        </div>
+    </div>
+    <div class="row p-4">
+        <div class="col-12">
+            <img src="~/assets/logo-compurent-color.png" class="img-fluid" alt="Compured Color" />
+        </div>
+    </div>
+    <div class="row">
+        <div id="historyOne" class="col-3" style="display:none">
+            <div class="card">
+                <div class="card-header">
+                    Búsqueda
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Filtre por canción o álbum</h5>
+                    <form id="frmSearch">
+                        <div class="col-row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label asp-for="SearchDTO.SearchBy"></label>
+                                    <select asp-for="SearchDTO.SearchBy" class="custom-select" asp-items="Html.GetEnumSelectList<SearchBy>()"></select>
+                                    <span asp-validation-for="SearchDTO.SearchBy" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label asp-for="SearchDTO.QueryToFilter"></label>
+                                    <input asp-for="SearchDTO.QueryToFilter" class="form-control" placeholder="Digite su filtro..." />
+                                    <span asp-validation-for="SearchDTO.QueryToFilter" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-outline-success"><i class="fa fa-search"></i> Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="historyOneRenderResult" class="col-12"></div>
+    </div>
+</section>
+
+
+@section Scripts{
+     @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script type="text/javascript">
+        var $historyOneRenderResult = document.querySelector("#historyOneRenderResult");
+        const $frmSearch = document.querySelector("#frmSearch");
+        $frmSearch.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            if (!$(event.target).valid()) {
+                return;
+            }
+
+            $historyOneRenderResult.innerHTML = `<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>`;
+
+            const searchRequest = await fetch("/Search/", {
+                method: "POST",
+                body: new FormData(event.target)
+            });
+
+            if (searchRequest.ok) {
+                const requestResult = await searchRequest.text();
+                if (requestResult) {
+                    $historyOneRenderResult.innerHTML = requestResult;
+                } else {
+                    $historyOneRenderResult.innerHTML = `<div class="alert alert-info" role="alert">
+                                                          No hay resultados
+                                                        </div>`;
+                }
+
+                event.target.reset();
+            } else {
+                $historyOneRenderResult.innerHTML = `<div class="alert alert-danger" role="alert">
+                                                          Un error ha ocurrido. Favor contacte al administrador del sistema. 😥
+                                                        </div>`;
+            }
+
+            this.ToogleSearch();
+        });
+
+        function ToogleSearch() {
+            const $historyOne = document.querySelector("#historyOne");
+
+            if ($historyOne.style.display === "block") {
+                $historyOne.style.display = "none";
+            } else {
+                $historyOne.style.display = "block";
+            }
+        }
+
+        function SearchTryAgain() {
+            $historyOneRenderResult.innerHTML = "";
+            this.ToogleSearch();
+        }
+    </script>
+}

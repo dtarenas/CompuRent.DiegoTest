@@ -1,0 +1,39 @@
+﻿@model IEnumerable<AlbumSetEntity>
+
+<div class="card">
+    <div class="card-header">
+        Resultado de Búsqueda por Álbum
+    </div>
+    <div class="card-body">
+        @if (Model.Any())
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info" role="alert">
+                No hay resultados  <br />
+                <a class="btn btn-block btn-info my-2" href="javascript:;" onclick="SearchTryAgain()">Volver a intentar</a>
+            </div>
+        }
+    </div>
+</div>

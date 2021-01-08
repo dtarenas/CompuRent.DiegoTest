@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Presentation", "3. Presentation", "{188F086B-E807-4DD2-97C9-6F16B93DF064}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Models", "1. Models", "{650432CF-9C79-4422-AB6A-23B8879400AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Services", "2. Services", "{4E2E3201-88A1-469E-8A63-F957178DD96A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompuRent.DiegoTest.Presentation", "CompuRent.DiegoTest.Presentation\CompuRent.DiegoTest.Presentation.csproj", "{9E57897F-3DF4-42FC-AC43-D9F83505A0AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompuRent.DiegoTest.Services", "CompuRent.DiegoTest.Services\CompuRent.DiegoTest.Services.csproj", "{1866AA86-941A-4128-8B4F-1A4D176753F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompuRent.DiegoTest.Models", "CompuRent.DiegoTest.Models\CompuRent.DiegoTest.Models.csproj", "{243A9EA7-A38F-49C5-A60A-469220AF9BDA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Tests", "4. Tests", "{0535D91C-7F04-4F52-90FB-A2CD2CB9F76F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E57897F-3DF4-42FC-AC43-D9F83505A0AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E57897F-3DF4-42FC-AC43-D9F83505A0AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E57897F-3DF4-42FC-AC43-D9F83505A0AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E57897F-3DF4-42FC-AC43-D9F83505A0AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1866AA86-941A-4128-8B4F-1A4D176753F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1866AA86-941A-4128-8B4F-1A4D176753F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1866AA86-941A-4128-8B4F-1A4D176753F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1866AA86-941A-4128-8B4F-1A4D176753F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{243A9EA7-A38F-49C5-A60A-469220AF9BDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{243A9EA7-A38F-49C5-A60A-469220AF9BDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{243A9EA7-A38F-49C5-A60A-469220AF9BDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{243A9EA7-A38F-49C5-A60A-469220AF9BDA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9E57897F-3DF4-42FC-AC43-D9F83505A0AC} = {188F086B-E807-4DD2-97C9-6F16B93DF064}
+		{1866AA86-941A-4128-8B4F-1A4D176753F4} = {4E2E3201-88A1-469E-8A63-F957178DD96A}
+		{243A9EA7-A38F-49C5-A60A-469220AF9BDA} = {650432CF-9C79-4422-AB6A-23B8879400AB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE3A3ECE-D8C3-4AE8-94E9-C8B808808DC3}
+	EndGlobalSection
+EndGlobal

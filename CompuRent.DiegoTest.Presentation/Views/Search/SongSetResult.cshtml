@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SongSetEntity>
+
+
+<div class="card">
+    <div class="card-header">
+        Resultado de Búsqueda Por Canción
+    </div>
+    <div class="card-body">
+        @if (Model.Any())
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AlbumSet)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AlbumSet.Name)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="alert alert-info" role="alert">
+                No hay resultados <br />
+                <a class="btn btn-block btn-info my-2" href="javascript:;" onclick="SearchTryAgain()">Volver a intentar</a>
+            </div>
+        }
+    </div>
+</div>

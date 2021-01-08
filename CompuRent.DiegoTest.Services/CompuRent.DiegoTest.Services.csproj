@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DAL\20210108015733_Initial.cs" />
+    <Compile Remove="DAL\20210108015733_Initial.Designer.cs" />
+    <Compile Remove="DAL\Migrations\20210108015921_Initial.cs" />
+    <Compile Remove="DAL\Migrations\20210108015921_Initial.Designer.cs" />
+    <Compile Remove="DAL\Migrations\20210108020153_Initial.cs" />
+    <Compile Remove="DAL\Migrations\20210108020153_Initial.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="BL\" />
+    <Folder Include="DAL\Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CompuRent.DiegoTest.Models\CompuRent.DiegoTest.Models.csproj" />
+  </ItemGroup>
+
+</Project>
