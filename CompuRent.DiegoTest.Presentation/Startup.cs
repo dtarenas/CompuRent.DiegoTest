@@ -1,15 +1,19 @@
 namespace CompuRent.DiegoTest.Presentation
 {
+    using CompuRent.DiegoTest.Services.BL;
+    using CompuRent.DiegoTest.Services.BL.Facades;
     using CompuRent.DiegoTest.Services.DAL;
     using CompuRent.DiegoTest.Services.DAL.Repositories;
     using CompuRent.DiegoTest.Services.DAL.Repositories.Facades;
     using CompuRent.DiegoTest.Services.Services;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using System;
 
     /// <summary>
     /// Startup Class
@@ -42,10 +46,27 @@ namespace CompuRent.DiegoTest.Presentation
         {
             services.AddControllersWithViews();
 
+            ////Configure Session Cookie
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".CompuRent.Diego.Test.SessionCookie";
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.IsEssential = true;
+                options.Cookie.HttpOnly = true;
+            });
+
             ////Seed Database
             services.AddTransient<SeederDataBaseService>();
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            ////Configure Http Context
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
+            ////Configure Injection Services
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<ISearchServiceBL, SearchServiceBL>();
+            services.AddScoped<IAccountServiceBL, AccountServiceBL>();
+            services.AddScoped<IShopingServiceBL, ShopingServiceBL>();
+            
             ////Configure Context
             services.AddDbContext<MusicRadioIncDbContext>(options =>
             {
@@ -77,7 +98,7 @@ namespace CompuRent.DiegoTest.Presentation
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

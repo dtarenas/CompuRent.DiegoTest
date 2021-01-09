@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CompuRent.DiegoTest.Models.Entities.PurchaseDetailEntity>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Detalle de compras (Listado)</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlbumSet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Client.Name) - @Html.DisplayFor(modelItem => item.Client.ClientId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AlbumSet.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a class="btn btn-secondary" asp-action="Index" asp-controller="Home"><i class="fa fa-arrow-circle-left"></i> Volver</a>
+</div>

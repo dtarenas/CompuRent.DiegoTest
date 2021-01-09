@@ -2,7 +2,6 @@
 {
     using CompuRent.DiegoTest.Services.DAL.Repositories.Facades;
     using Microsoft.EntityFrameworkCore;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -39,42 +38,20 @@
         /// <returns>
         /// Task
         /// </returns>
-        public async Task<TEntity> Create(TEntity entity)
+        public async Task<TEntity> Add(TEntity entity)
         {
             await this.DBSet.AddAsync(entity);
             return entity;
         }
 
         /// <summary>
-        /// Creates the specified author.
-        /// </summary>
-        /// <param name="entities">The entities.</param>
-        /// <returns>
-        /// Task
-        /// </returns>
-        public async Task<IEnumerable<TEntity>> Create(IEnumerable<TEntity> entities)
-        {
-            await this.DBSet.AddRangeAsync(entities);
-            return entities;
-        }
-
-        /// <summary>
         /// Deletes the specified identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        public async Task Delete(int id)
+        public async Task Remove(int id)
         {
             var entity = await this.DBSet.FindAsync(id);
             this._context.Remove(entity);
-        }
-
-        /// <summary>
-        /// Deletes the specified entities.
-        /// </summary>
-        /// <param name="entities">The entities.</param>
-        public void Delete(IEnumerable<TEntity> entities)
-        {
-            this._context.RemoveRange(entities);
         }
 
         /// <summary>

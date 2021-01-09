@@ -8,26 +8,25 @@
     <h1 class="display-4 text-success mt-5"><b>CompuRent</b> - Diego Arenas Test</h1>
 
     <div class="row">
-        <div class="col-12 col-md-3 col-sm-3 col-lg-3">
-            <a class="btn btn-block btn-info my-2" href="javascript:;" onclick="SearchTryAgain()()">Historia de Usuario 1</a>
+        <div class="col-12 col-md-4 col-sm-4 col-lg-4">
+            <a class="btn btn-block btn-info my-2" href="javascript:;" onclick="ToogleSearch()">Historia de Usuario 1 y 4 <br /> (Búsqueda y compra)</a>
         </div>
-        <div class="col-12 col-md-3 col-sm-3 col-lg-3">
-            <a class="btn btn-block btn-primary my-2" href="#">Historia de Usuario 2</a>
+        <div class="col-12 col-md-4 col-sm-4 col-lg-4">
+            <a class="btn btn-block btn-primary my-2" href="javascript:;" onclick="ToggleAdmin()">Historia de Usuario 2 <br /> (Sección Administrativa)</a>
         </div>
-        <div class="col-12 col-md-3 col-sm-3 col-lg-3">
-            <a class="btn btn-block btn-warning my-2" href="#">Historia de Usuario 3</a>
-        </div>
-        <div class="col-12 col-md-3 col-sm-3 col-lg-3">
-            <a class="btn btn-block btn-secondary my-2" href="#">Historia de Usuario 4</a>
+        <div class="col-12 col-md-4 col-sm-4 col-lg-4">
+            <a class="btn btn-block btn-warning my-2" href="javascript:;" onclick="ToggleRegister()">Historia de Usuario 3 <br /> (Registro e inicio de sesión)</a>
         </div>
     </div>
     <div class="row p-4">
         <div class="col-12">
-            <img src="~/assets/logo-compurent-color.png" class="img-fluid" alt="Compured Color" />
+            <img src="~/assets/logo-compurent-color.png" class="img-fluid" alt="Compurent Color" />
         </div>
     </div>
+</section>
+<section id="userHystories">
     <div class="row">
-        <div id="historyOne" class="col-3" style="display:none">
+        <div id="userHistoryOne" class="col-12 col-md-4 py-2" style="display:none">
             <div class="card">
                 <div class="card-header">
                     Búsqueda
@@ -51,68 +50,296 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-outline-success"><i class="fa fa-search"></i> Buscar</button>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-outline-success"><i class="fa fa-search"></i> Buscar</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
-        <div id="historyOneRenderResult" class="col-12"></div>
+        <div id="userHistoryOneRenderResult" class="col-12 col-md-8 py-2"></div>
+    </div>
+    <div class="row">
+        <div id="userHistoryTwo" class="col-12" style="display:none">
+            <div class="text-center">
+                <h1>Sección Administativa</h1>
+            </div>
+            <div class="row my-5">
+                <div class="col-12 col-md-4 py-2">
+                    <a class="btn btn-outline-primary btn-block" asp-action="Index" asp-controller="AlbumSets">Álbumes</a>
+                </div>
+                <div class="col-12 col-md-4 py-2">
+                    <a class="btn btn-outline-primary btn-block" asp-action="Index" asp-controller="SongSets">Canciones</a>
+                </div>
+                <div class="col-12 col-md-4 py-2">
+                    <a class="btn btn-outline-primary btn-block" asp-action="Index" asp-controller="PurchaseDetails">Compras</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="userHistoryThree" class="col-12" style="display:none">
+            <div class="card">
+                <div class="card-header">
+                    Registro
+                    <a class="btn btn-outline-primary m-0 float-right" href="#" onclick="ToggleLogin()"><i class="fa fa-user"></i> Iniciar Sesión</a>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Ingrese todos los campos</h5>
+                    <form id="frmRegister">
+                        <div class="form-row">
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="ClientRegisterDTO.ClientId"></label>
+                                    <input asp-for="ClientRegisterDTO.ClientId" class="form-control" placeholder="123456AD" />
+                                    <span asp-validation-for="ClientRegisterDTO.ClientId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="ClientRegisterDTO.Name"></label>
+                                    <input asp-for="ClientRegisterDTO.Name" class="form-control" placeholder="Ingrese su nombre completo" />
+                                    <span asp-validation-for="ClientRegisterDTO.Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="ClientRegisterDTO.Email"></label>
+                                    <input asp-for="ClientRegisterDTO.Email" class="form-control" placeholder="pruebas@compurent.com" />
+                                    <span asp-validation-for="ClientRegisterDTO.Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="ClientRegisterDTO.Address"></label>
+                                    <input asp-for="ClientRegisterDTO.Address" class="form-control" placeholder="Calle falsa 123" />
+                                    <span asp-validation-for="ClientRegisterDTO.Address" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="ClientRegisterDTO.Phone"></label>
+                                    <input asp-for="ClientRegisterDTO.Phone" class="form-control" placeholder="123654 46 52" />
+                                    <span asp-validation-for="ClientRegisterDTO.Phone" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="ClientRegisterDTO.Password"></label>
+                                    <input asp-for="ClientRegisterDTO.Password" class="form-control" />
+                                    <span asp-validation-for="ClientRegisterDTO.Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="ClientRegisterDTO.ConfirmPassword"></label>
+                                    <input asp-for="ClientRegisterDTO.ConfirmPassword" class="form-control" />
+                                    <span asp-validation-for="ClientRegisterDTO.ConfirmPassword" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-outline-success"><i class="fa fa-check"></i> Registrarse</button>
+                            <div id="renderRegisterLoading" class="py-3">
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="loginSection">
+    <!-- Modal -->
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="frmLogin">
+                        <div class="row">
+                            <div class="col-12 col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="LoginDTO.ClientId"></label>
+                                    <input asp-for="LoginDTO.ClientId" class="form-control" />
+                                    <span asp-validation-for="LoginDTO.ClientId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="LoginDTO.Password"></label>
+                                    <input asp-for="LoginDTO.Password" class="form-control" />
+                                    <span asp-validation-for="LoginDTO.Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <div id="renderLoginLoading" class="py-3"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
 
 @section Scripts{
-     @await Html.PartialAsync("_ValidationScriptsPartial")
+    @await Html.PartialAsync("_ValidationScriptsPartial")
 
     <script type="text/javascript">
-        var $historyOneRenderResult = document.querySelector("#historyOneRenderResult");
+        var $userHistoryOneRenderResult = document.querySelector("#userHistoryOneRenderResult");
         const $frmSearch = document.querySelector("#frmSearch");
+        const $frmRegister = document.querySelector("#frmRegister");
+        const $frmLogin = document.querySelector("#frmLogin");
+
         $frmSearch.addEventListener("submit", async (event) => {
             event.preventDefault();
             if (!$(event.target).valid()) {
                 return;
             }
 
-            $historyOneRenderResult.innerHTML = `<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>`;
+            $userHistoryOneRenderResult.innerHTML = `<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>`;
 
             const searchRequest = await fetch("/Search/", {
                 method: "POST",
                 body: new FormData(event.target)
             });
 
+            $userHistoryOneRenderResult.style.display = "block";
             if (searchRequest.ok) {
                 const requestResult = await searchRequest.text();
                 if (requestResult) {
-                    $historyOneRenderResult.innerHTML = requestResult;
+                    $userHistoryOneRenderResult.innerHTML = requestResult;
                 } else {
-                    $historyOneRenderResult.innerHTML = `<div class="alert alert-info" role="alert">
-                                                          No hay resultados
-                                                        </div>`;
+                    $userHistoryOneRenderResult.innerHTML = `<div class="alert alert-info" role="alert">
+                                                                          No hay resultados
+                                                                        </div>`;
                 }
 
                 event.target.reset();
             } else {
-                $historyOneRenderResult.innerHTML = `<div class="alert alert-danger" role="alert">
-                                                          Un error ha ocurrido. Favor contacte al administrador del sistema. 😥
-                                                        </div>`;
+                $userHistoryOneRenderResult.innerHTML = `<div class="alert alert-danger" role="alert">
+                                                                          Un error ha ocurrido. Favor contacte al administrador del sistema. 😥
+                                                                        </div>`;
+            }
+        });
+
+        $frmRegister.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            if (!$($frmRegister).valid()) {
+                return;
             }
 
-            this.ToogleSearch();
+            let $renderRegisterLoading = document.querySelector("#renderRegisterLoading");
+            $renderRegisterLoading.innerHTML = `<i class="fa fa-refresh fa-spin fa-5x fa-fw"></i><span class="lead">Registrando...</span>`;
+            const registerRequest = await fetch('/Account/Register/', {
+                method: "POST",
+                body: new FormData($frmRegister)
+            });
+
+            if (registerRequest.ok) {
+                $frmRegister.reset();
+                const result = await registerRequest.text();
+                if (result == 'true') {
+                    $renderRegisterLoading.innerHTML = `<div class="alert alert-success" role="alert">¡Registro Exitoso! <br> <a class="btn btn-outline-primary m-0 float-right" href="#" onclick="ToggleLogin()"><i class="fa fa-user"></i> Iniciar Sesión</a></div>`;
+                } else {
+                    $renderRegisterLoading.innerHTML = `<div class="alert alert-danger" role="alert"> Un error ha ocurrido generando registro. Favor contacte al administrador del sistema. 😥 </div>`;
+                }
+            } else {
+                if (registerRequest.status == 400) {
+                    $renderRegisterLoading.innerHTML = `<div class="alert alert-info" role="alert">Cliente ya existe. Por Favor <a class="btn btn-outline-primary m-0 float-right" href="#" onclick="ToggleLogin()"><i class="fa fa-user"></i> Iniciar Sesión</a></div>`;
+                } else {
+                    $renderRegisterLoading.innerHTML = `<div class="alert alert-danger" role="alert"> Un error ha ocurrido generando registro. Favor contacte al administrador del sistema. 😥 </div>`;
+                }
+            }
+        });
+
+        $frmLogin.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            if (!$($frmLogin).valid()) {
+                return;
+            }
+
+            const $renderLoginLoading = document.querySelector("#renderLoginLoading");
+            $renderLoginLoading.innerHTML = `<i class="fa fa-refresh fa-spin fa-3x fa-fw"></i><span class="lead">Loading...</span>`;
+            const loginRequest = await fetch('/Account/Login/', {
+                method: "POST",
+                body: new FormData($frmLogin)
+            });
+
+            debugger;
+            if (loginRequest.ok) {
+                if (loginRequest.redirected) {
+                    $frmLogin.reset();
+                    $('#login').modal('hide');
+                    window.location = loginRequest.url;
+                    return;
+                }
+
+                $renderLoginLoading.innerHTML = `<div class="alert alert-danger" role="alert"> Un error ha ocurrido iniciando sesión. Favor contacte al administrador del sistema. 😥 </div>`;
+
+            } else {
+                $renderLoginLoading.innerHTML = `<div class="alert alert-danger" role="alert"> Un error ha ocurrido iniciando sesión. Favor contacte al administrador del sistema. 😥 </div>`;
+            }
         });
 
         function ToogleSearch() {
-            const $historyOne = document.querySelector("#historyOne");
+            this.HideAll();
+            const $userHistoryOne = document.querySelector("#userHistoryOne");
 
-            if ($historyOne.style.display === "block") {
-                $historyOne.style.display = "none";
+            if ($userHistoryOne.style.display === "block") {
+                $userHistoryOne.style.display = "none";
             } else {
-                $historyOne.style.display = "block";
+                $userHistoryOne.style.display = "block";
+            }
+
+            $userHistoryOneRenderResult.innerHTML = "";
+        }
+
+        function ToggleAdmin() {
+            this.HideAll();
+
+            const $userHistoryTwo = document.querySelector("#userHistoryTwo");
+
+            if ($userHistoryTwo.style.display === "block") {
+                $userHistoryTwo.style.display = "none";
+            } else {
+                $userHistoryTwo.style.display = "block";
             }
         }
 
-        function SearchTryAgain() {
-            $historyOneRenderResult.innerHTML = "";
-            this.ToogleSearch();
+        function ToggleRegister() {
+            this.HideAll();
+
+            const $userHistoryThree = document.querySelector("#userHistoryThree");
+
+            if ($userHistoryThree.style.display === "block") {
+                $userHistoryThree.style.display = "none";
+            } else {
+                $userHistoryThree.style.display = "block";
+            }
+        }
+
+        function ToggleLogin() {
+            $('#login').modal('show');
+        }
+
+        function HideAll() {
+            document.querySelector("#userHistoryOne").style.display = "none";
+            document.querySelector("#userHistoryTwo").style.display = "none";
+            document.querySelector("#userHistoryThree").style.display = "none";
+            document.querySelector("#userHistoryOneRenderResult").style.display = "none";
         }
     </script>
 }

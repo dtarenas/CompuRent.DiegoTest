@@ -1,30 +1,18 @@
-﻿namespace CompuRent.DiegoTest.Models.Entities
+﻿namespace CompuRent.DiegoTest.Models.DTOs
 {
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
-    /// Client Entity Class
+    /// Client Register Data Transfer Object
     /// </summary>
-    [Table("clients")]
-    public class ClientEntity
+    public class ClientRegisterDTO
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ClientEntity"/> class.
-        /// </summary>
-        public ClientEntity()
-        {
-            this.PurchaseDetails = new HashSet<PurchaseDetailEntity>();
-        }
-
         /// <summary>
         /// Gets or sets the client identifier.
         /// </summary>
         /// <value>
         /// The client identifier.
         /// </value>
-        [Key]
         [Display(Name = "Doc. Identificación")]
         [MaxLength(10, ErrorMessage = "{0} debe contener máximo {1} caracteres")]
         [Required(ErrorMessage = "{0} es obligatorio.")]
@@ -81,19 +69,22 @@
         /// <value>
         /// The password.
         /// </value>
-        [StringLength(64, ErrorMessage = "{0} debe contener máximo {1} caracteres.")]
+        [MaxLength(30, ErrorMessage = "{0} debe contener máximo {1} caracteres.")]
         [Required(ErrorMessage = "{0} es obligatorio.")]
         [Display(Name = "Contraseña")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         /// <summary>
-        /// Gets or sets the purchase details.
+        /// Gets or sets the confirm password.
         /// </summary>
         /// <value>
-        /// The purchase details.
+        /// The confirm password.
         /// </value>
-        [Display(Name = "Detalle de la compra")]
-        public ICollection<PurchaseDetailEntity> PurchaseDetails { get; set; }
+        [Display(Name = "Confirmar contraseña")]
+        [Compare(nameof(Password), ErrorMessage = "Contraseñas no coinciden")]
+        [DataType(DataType.Password)]
+        public string ConfirmPassword { get; set; }
 
     }
 }

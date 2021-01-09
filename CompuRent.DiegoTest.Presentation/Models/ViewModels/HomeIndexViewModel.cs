@@ -14,5 +14,21 @@
         /// The search dto.
         /// </value>
         public SearchDTO SearchDTO { get; set; }
+
+        /// <summary>
+        /// Gets or sets the client register dto.
+        /// </summary>
+        /// <value>
+        /// The client register dto.
+        /// </value>
+        public ClientRegisterDTO  ClientRegisterDTO { get; set; }
+
+        /// <summary>
+        /// Gets or sets the login dto.
+        /// </summary>
+        /// <value>
+        /// The login dto.
+        /// </value>
+        public LoginDTO LoginDTO { get; set; }
     }
 }

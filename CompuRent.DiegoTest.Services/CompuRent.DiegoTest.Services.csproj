@@ -11,14 +11,15 @@
     <Compile Remove="DAL\Migrations\20210108015921_Initial.Designer.cs" />
     <Compile Remove="DAL\Migrations\20210108020153_Initial.cs" />
     <Compile Remove="DAL\Migrations\20210108020153_Initial.Designer.cs" />
+    <Compile Remove="DAL\Migrations\20210108170708_AddPasswordFieldToClientTable.cs" />
+    <Compile Remove="DAL\Migrations\20210108170708_AddPasswordFieldToClientTable.Designer.cs" />
+    <Compile Remove="DAL\Migrations\20210108170823_AddPasswordFieldToClientTable.cs" />
+    <Compile Remove="DAL\Migrations\20210108170823_AddPasswordFieldToClientTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="BL\" />
-    <Folder Include="DAL\Migrations\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10">
